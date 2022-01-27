@@ -97,5 +97,5 @@ var GreeterService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user/hello_service.proto",
+	Metadata: "user/greeter_service.proto",
 }
