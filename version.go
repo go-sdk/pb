@@ -1,10 +1,9 @@
-cat >pb/version.go <<EOF
 package pb
 
 var (
 	VERSION = "latest"
-	GITHASH = "6727949"
-	BUILT   = "2022-01-27T10:12:00+0000"
+	GITHASH = "50e87bc"
+	BUILT   = "2022-01-28T01:38:13+0000"
 )
 
 func VersionInfoMap() map[string]interface{} {
