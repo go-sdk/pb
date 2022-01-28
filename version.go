@@ -1,9 +1,9 @@
 package pb
 
 var (
-	VERSION = "dev"
-	GITHASH = "ddf8082"
-	BUILT   = "2022-01-28T06:18:22+0000"
+	VERSION = "v0.1.5"
+	GITHASH = "ca65418"
+	BUILT   = "2022-01-28T06:19:36+0000"
 )
 
 func VersionInfoMap() map[string]interface{} {
