@@ -7,6 +7,9 @@
   "tags": [
     {
       "name": "UserService"
+    },
+    {
+      "name": "AuthService"
     }
   ],
   "schemes": [
@@ -19,6 +22,30 @@
     "application/json"
   ],
   "paths": {
+    "/auth/_health": {
+      "get": {
+        "summary": "鉴权模块",
+        "operationId": "AuthService_Health",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "auth.AuthService"
+        ],
+        "security": []
+      }
+    },
     "/user/_health": {
       "get": {
         "summary": "用户模块",
@@ -38,7 +65,7 @@
           }
         },
         "tags": [
-          "user.UserService"
+          "admin.UserService"
         ],
         "security": []
       }
@@ -67,17 +94,36 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/userUser"
+              "$ref": "#/definitions/adminUser"
             }
           }
         ],
         "tags": [
-          "user.UserService"
+          "admin.UserService"
         ]
       }
     }
   },
   "definitions": {
+    "adminUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/commonMeta"
+        }
+      },
+      "title": "用户"
+    },
     "commonId": {
       "type": "object",
       "properties": {
@@ -156,25 +202,6 @@
           }
         }
       }
-    },
-    "userUser": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "readOnly": true
-        },
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "meta": {
-          "$ref": "#/definitions/commonMeta"
-        }
-      },
-      "title": "用户"
     }
   },
   "securityDefinitions": {
